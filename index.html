@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VIZTA Family KTV</title>
+  <title>Inul StarZ</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-orange-500 min-h-screen relative">
 
-  <nav class="bg-pink-500 text-white p-4 flex justify-between items-center z-50 relative">
+  <!--<nav class="bg-pink-500 text-white p-4 flex justify-between items-center z-50 relative">
     <div class="font-bold text-xl">VIZTA Family KTV</div>
+    <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
+  </nav>-->
+
+  <!--<nav class="bg-pink-500 text-white p-4 flex justify-between items-center z-50 relative">
+    <div class="flex items-center gap-2">
+      <img src="logo.png" alt="Logo Vizta" class="h-10 w-auto"/>
+    </div>
+    <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
+  </nav>-->
+
+  <nav class="bg-pink-500 text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
+    <div class="flex items-center gap-2">
+      <img src="logo.png" alt="Logo Vizta" class="h-10 w-auto"/>
+    </div>
     <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
   </nav>
 
@@ -22,79 +37,50 @@
         <li>
             <div>
                 <a href="home.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">HOME</a>
-                <ul class="submenu hidden pl-6 text-sm">
-                    <li><a href="beranda.html" class="block px-4 py-1 hover:bg-pink-500">Beranda</a></li>
-                    <li><a href="tentang.html" class="block px-4 py-1 hover:bg-pink-500">Tentang Kami</a></li>
-                </ul>
             </div>
         </li>
         <li>
             <div>
                 <a href="news.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">NEWS</a>
-                <ul class="submenu hidden pl-6 text-sm">
-                    <li><a href="berita.html" class="block px-4 py-1 hover:bg-pink-500">Berita Terbaru</a></li>
-                    <li><a href="promo.html" class="block px-4 py-1 hover:bg-pink-500">Update Promo</a></li>
-                </ul>
             </div>
         </li>
         <li>
             <div>
-            <a href="outlet.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">OUTLET</a>
-            <ul class="submenu hidden pl-6 text-sm">
-                <li><a href="jakarta.html" class="block px-4 py-1 hover:bg-pink-500">Cabang Jakarta</a></li>
-                <li><a href="bandung.html" class="block px-4 py-1 hover:bg-pink-500">Cabang Bandung</a></li>
-            </ul>
+              <a href="outlet.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">OUTLET</a>
             </div>
         </li>
         <li>
             <div>
-            <a href="system.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">SYSTEM</a>
-            <ul class="submenu hidden pl-6 text-sm">
-                <li><a href="booking.html" class="block px-4 py-1 hover:bg-pink-500">Booking Online</a></li>
-                <li><a href="login.html" class="block px-4 py-1 hover:bg-pink-500">Login Member</a></li>
-            </ul>
+              <a href="system.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">SYSTEM</a>
             </div>
         </li>
         <li>
             <div>
-            <a href="event.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">EVENT</a>
-            <ul class="submenu hidden pl-6 text-sm">
-                <li><a href="konser.html" class="block px-4 py-1 hover:bg-pink-500">Konser Mini</a></li>
-                <li><a href="ulangtahun.html" class="block px-4 py-1 hover:bg-pink-500">Event Ulang Tahun</a></li>
-            </ul>
+              <a href="event.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">EVENT</a>
             </div>
         </li>
         <li>
             <div>
-            <a href="promo.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">PROMO</a>
-            <ul class="submenu hidden pl-6 text-sm">
-                <li><a href="tiket.html" class="block px-4 py-1 hover:bg-pink-500">Promo Tiket.com</a></li>
-                <li><a href="rame.html" class="block px-4 py-1 hover:bg-pink-500">Promo Rame-rame</a></li>
-            </ul>
+              <a href="promo.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">PROMO</a>
             </div>
         </li>
         <li>
             <div>
-            <a href="faq.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">FAQ</a>
-            <ul class="submenu hidden pl-6 text-sm">
-                <li><a href="cara-booking.html" class="block px-4 py-1 hover:bg-pink-500">Cara Booking</a></li>
-                <li><a href="syarat.html" class="block px-4 py-1 hover:bg-pink-500">Syarat & Ketentuan</a></li>
-            </ul>
+              <a href="faq.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">FAQ</a>
             </div>
         </li>
         <li>
             <div>
-            <a href="info.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">ABOUT US</a>
-            <ul class="submenu hidden pl-6 text-sm">
-                <li><a href="kontak.html" class="block px-4 py-1 hover:bg-pink-500">Kontak</a></li>
-                <li><a href="jam.html" class="block px-4 py-1 hover:bg-pink-500">Jam Operasional</a></li>
-            </ul>
+              <a href="about.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">ABOUT US</a>
             </div>
         </li>
+        <li>
+          <div>
+            <a href="contact.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">CONTACT</a>
+          </div>
+      </li>
     </ul>
-
   </div>
-
 
   <div class="relative">
     <img src="hed.jpeg" alt="KTV Room" class="w-full h-full object-cover" />
