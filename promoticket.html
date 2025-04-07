@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inul StarZ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-pink-500 min-h-screen relative">
+
+  <nav class="bg-pink-500 text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
+    <div class="flex items-center gap-2">
+      <img src="starz.png" class="h-10 w-auto filter brightness-125" alt="Logo Vizta" />
+    </div>
+    <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
+  </nav>
+
+  <div id="dashboard" class="fixed top-0 right-0 w-64 h-full bg-pink-500 text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-4 flex justify-between items-center border-b border-pink-400">
+      <h2 class="text-xl font-bold">Dashboard</h2>
+      <button id="closeBtn" class="text-xl">✖</button>
+    </div>
+    <ul class="mt-4 space-y-2">
+      <li><a href="home.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">HOME</a></li>
+      <li><a href="news.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">NEWS</a></li>
+      <li><a href="outlet.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">OUTLET</a></li>
+      <li><a href="system.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">SYSTEM</a></li>
+      <li><a href="event.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">EVENT</a></li>
+      <li><a href="promo.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">PROMO</a></li>
+      <li><a href="faq.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">FAQ</a></li>
+      <li><a href="about.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">ABOUT US</a></li>
+      <li><a href="contact.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <section class="w-full min-h-screen bg-cover bg-center" style="background-image: url('hed.jpeg');">
+    <div class="w-full min-h-screen bg-gray-700 bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white">
+            <h2 class="text-4xl font-bold mb-4">Inul StarZ</h2>
+        </div>
+    </div>
+  </section>
+
+  <section class="bg-white text-gray-800 px-6 py-8 max-w-4xl mx-auto rounded-lg shadow-md mt-10">
+
+    <div class="mb-6">
+        <img src="ticket.png" alt="rame" class="w-full max-w-md mx-auto rounded-lg shadow-md">
+    </div>
+
+    <p class="leading-relaxed text-justify mb-4">
+      Siap-siap untuk seru-seruan karaoke di Inul Vizta dengan voucher hemat dari Tiket.com! 👏✨
+      Dapatkan paket mulai dari <span class="font-semibold text-orange-600">Rp 85.000</span> dan rasakan suasana menyenangkan yang hanya bisa kamu temukan di sini.
+      Jangan lewatkan kesempatan ini untuk merayakan kebersamaan bersama keluarga atau teman-teman kamu.
+      Beli voucher-nya sekarang di <span class="text-blue-600 font-medium">Tiket.com</span> dan buat momentmu Tak terlupakan! 😍
+    </p>
+  
+    <p class="mt-4 text-sm text-gray-600">
+      Category:
+      <a href="#" class="text-pink-500 hover:underline">Promo</a>,
+      <a href="#" class="text-pink-500 hover:underline">Promo Pusat</a>
+    </p>
+  </section>
+  
+
+  <footer class="fixed bottom-4 right-4 z-50">
+    <a href="contact.html" class="bg-green-500 p-3 rounded-full shadow-lg flex items-center justify-center w-14 h-14">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8" />
+    </a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.promo-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.add('shadow-[0_20px_40px_rgba(0,0,0,0.6)]');
+        setTimeout(() => {
+          card.classList.remove('shadow-[0_20px_40px_rgba(0,0,0,0.6)]');
+        }, 300);
+      });
+    });
+  </script>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const dashboard = document.getElementById("dashboard");
+
+    menuBtn.addEventListener("click", () => {
+      dashboard.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      dashboard.classList.add("translate-x-full");
+    });
+
+    const submenuToggles = document.querySelectorAll(".submenu-toggle");
+    submenuToggles.forEach(toggle => {
+      toggle.addEventListener("click", () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle("hidden");
+      });
+    });
+  </script>
+</body>
+</html>

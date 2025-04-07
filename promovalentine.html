@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inul StarZ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-pink-500 min-h-screen relative">
+
+  <nav class="bg-pink-500 text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
+    <div class="flex items-center gap-2">
+      <img src="starz.png" class="h-10 w-auto filter brightness-125" alt="Logo Vizta" />
+    </div>
+    <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
+  </nav>
+
+  <div id="dashboard" class="fixed top-0 right-0 w-64 h-full bg-pink-500 text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-4 flex justify-between items-center border-b border-pink-400">
+      <h2 class="text-xl font-bold">Dashboard</h2>
+      <button id="closeBtn" class="text-xl">✖</button>
+    </div>
+    <ul class="mt-4 space-y-2">
+      <li><a href="home.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">HOME</a></li>
+      <li><a href="news.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">NEWS</a></li>
+      <li><a href="outlet.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">OUTLET</a></li>
+      <li><a href="system.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">SYSTEM</a></li>
+      <li><a href="event.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">EVENT</a></li>
+      <li><a href="promo.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">PROMO</a></li>
+      <li><a href="faq.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">FAQ</a></li>
+      <li><a href="about.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">ABOUT US</a></li>
+      <li><a href="contact.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <section class="w-full min-h-screen bg-cover bg-center" style="background-image: url('hed.jpeg');">
+    <div class="w-full min-h-screen bg-gray-700 bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white">
+            <h2 class="text-4xl font-bold mb-4">Inul StarZ</h2>
+        </div>
+    </div>
+  </section>
+
+    <section class="bg-white text-gray-800 px-6 py-10 max-w-3xl mx-auto rounded-lg shadow-md mt-10">
+
+    <div class="mb-6">
+        <img src="menu-makanan.png" alt="Menu Valentine" class="w-full max-w-md mx-auto rounded-lg shadow-md">
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4 text-center text-black">Promo Valentine Inul StarZ 💖</h2>
+    
+    <p class="mb-4 leading-relaxed text-justify">
+      Siap bikin Valentine tahun ini jadi momen tak terlupakan? Ajak orang tersayang bernyanyi dan bersenang-senang di Inul StarZ dengan promo spesial Valentine Package yang bikin suasana makin hangat dan romantis!
+    </p>
+  
+    <p class="mb-6 leading-relaxed text-justify">
+      Menu spesial yang bikin Valentine kamu makin istimewa: <strong>Ice Chocolate, Pink Soda, Crispy Choco, dan Pink Burger</strong> yang imut dan lezat!
+    </p>
+  
+    <h3 class="text-lg font-semibold mb-2">Promo ini berlaku di outlet berikut:</h3>
+    <ul class="list-disc pl-6 space-y-1 mb-6">
+      <li>Inul StarZ Sukabumi</li>
+      <li>Inul StarZ IRB Bogor</li>
+      <li>Inul StarZ Kokas</li>
+      <li>Inul StarZ Kramat Jati</li>
+      <li>Inul StarZ Balekota</li>
+      <li>Inul StarZ Tangcity</li>
+      <li>Inul StarZ Summarecon Mall Bekasi</li>
+      <li>Inul StarZ Pejaten</li>
+      <li>Inul StarZ Melawai</li>
+      <li>Inul StarZ Central Park</li>
+      <li>Inul StarZ Pluit</li>
+      <li>Inul StarZ Blu Plaza</li>
+      <li>Inul StarZ Buaran</li>
+      <li>Inul StarZ Cileungsi</li>
+    </ul>
+  
+    <div class="border-t pt-4 text-sm text-gray-700">
+      <p>
+        Jangan sampai kelewatan promo spesial ini! Ajak orang tersayangmu dan buat malam Valentine yang tak terlupakan di Inul StarZ!
+      </p>
+      <p class="mt-2">
+        Category: <a href="#" class="text-pink-500 hover:underline">Pejaten</a>
+      </p>
+    </div>
+    </section>
+    
+  <footer class="fixed bottom-4 right-4 z-50">
+    <a href="contact.html" class="bg-green-500 p-3 rounded-full shadow-lg flex items-center justify-center w-14 h-14">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8" />
+    </a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.promo-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.add('shadow-[0_20px_40px_rgba(0,0,0,0.6)]');
+        setTimeout(() => {
+          card.classList.remove('shadow-[0_20px_40px_rgba(0,0,0,0.6)]');
+        }, 300);
+      });
+    });
+  </script>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const dashboard = document.getElementById("dashboard");
+
+    menuBtn.addEventListener("click", () => {
+      dashboard.classList.remove("translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      dashboard.classList.add("translate-x-full");
+    });
+
+    const submenuToggles = document.querySelectorAll(".submenu-toggle");
+    submenuToggles.forEach(toggle => {
+      toggle.addEventListener("click", () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle("hidden");
+      });
+    });
+  </script>
+</body>
+</html>

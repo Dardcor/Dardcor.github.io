@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inul StarZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-pink-500 min-h-screen relative">
+    <nav class="bg-pink-500 text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
+      <div class="flex items-center gap-2">
+        <img src="starz.png" class="h-10 w-auto filter brightness-125" alt="Logo Vizta" />
+      </div>
+      <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
+    </nav>
+
+    <div id="dashboard" class="fixed top-0 right-0 w-64 h-full bg-pink-500 text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+      <div class="p-4 flex justify-between items-center border-b border-pink-400">
+        <h2 class="text-xl font-bold">Dashboard</h2>
+        <button id="closeBtn" class="text-xl">✖</button>
+      </div>
+      <ul class="mt-4 space-y-2">
+        <li><a href="home.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">HOME</a></li>
+        <li><a href="news.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">NEWS</a></li>
+        <li><a href="outlet.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">OUTLET</a></li>
+        <li><a href="system.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">SYSTEM</a></li>
+        <li><a href="event.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">EVENT</a></li>
+        <li><a href="promo.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">PROMO</a></li>
+        <li><a class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">FAQ</a></li>
+        <li><a href="about.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">ABOUT US</a></li>
+        <li><a href="contact.html" class="block px-4 py-2 hover:bg-pink-700 submenu-toggle">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <section class="w-full min-h-screen bg-cover bg-center" style="background-image: url('hed.jpeg');">
+      <div class="w-full min-h-screen bg-gray-700 bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white">
+          <h2 class="text-4xl font-bold mb-4">Inul StarZ</h2>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-2xl text-black font-bold mb-6 text-center">FAQ (Frequently Asked Question)</h1>
+
+      <div class="mb-2 border border-blue-500 rounded overflow-hidden">
+        <button class="faq-toggle flex w-full justify-between items-center bg-blue-500 text-white px-4 py-3 focus:outline-none">
+          <span>Mengapa Harus Di Inul StarZ?</span>
+          <span class="text-xl font-bold">+</span>
+        </button>
+        <div class="hidden bg-white text-gray-800 px-4 py-3 leading-relaxed">
+          <p>
+            StarZ Karaoke memposisikan sebagai <strong>“KARAOKE KELUARGA YANG TRENDY DAN SELEBIZZ”</strong>. Karaoke ini memang ditargetkan untuk memenuhi selera masyarakat kelas menengah metropolis trendy yang menginginkan bernyanyi, hang out, maupun berpesta pada tempat dan suasana yang colourful, cozy, fun, nyaman, sopan dan “selebriti abizz”, namun dengan biaya yang terjangkau.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-2 border border-blue-500 rounded overflow-hidden">
+        <button class="faq-toggle flex w-full justify-between items-center bg-blue-500 text-white px-4 py-3 focus:outline-none">
+          <span>Mahal Tidak sih, karaoke di Inul StarZ?</span>
+          <span class="text-xl font-bold">+</span>
+        </button>
+        <div class="hidden bg-white text-gray-800 px-4 py-3 leading-relaxed">
+          <p>
+            Kami menawarkan berbagai pilihan paket sesuai kebutuhan, mulai dari room kecil hingga VIP, dengan harga yang bersahabat. Paket kami dirancang agar fleksibel dan dapat disesuaikan dengan berbagai jenis acara, mulai dari reuni santai bersama teman atau keluarga kecil hingga pesta yang lebih besar dan eksklusif. Setiap paket mencakup fasilitas dasar seperti sistem audio dan pencahayaan modern, serta pilihan untuk menambahkan layanan ekstra seperti makanan, minuman, dan dekorasi khusus sesuai tema yang Anda inginkan. Kami juga selalu menyediakan promo dan diskon spesial secara berkala, sehingga Anda dapat menikmati pengalaman karaoke yang menyenangkan tanpa harus khawatir soal anggaran.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-2 border border-blue-500 rounded overflow-hidden">
+        <button class="faq-toggle flex w-full justify-between items-center bg-blue-500 text-white px-4 py-3 focus:outline-none">
+          <span>Berapa harga Room perjamnya?</span>
+          <span class="text-xl font-bold">+</span>
+        </button>
+        <div class="hidden bg-white text-gray-800 px-4 py-3 leading-relaxed">
+          <p>
+            Harga yang kami tawarkan bervariasi tergantung pada tipe room yang Anda pilih serta durasi kunjungan. Misalnya, room standar dengan fasilitas dasar memiliki tarif yang lebih terjangkau, sementara room dengan konsep eksklusif seperti Deluxe, VIP, atau VVIP dilengkapi dengan sistem audio dan visual yang lebih canggih serta dekorasi mewah memiliki harga yang lebih tinggi. Selain itu, tarif juga dipengaruhi oleh jam operasional, di mana harga pada jam sibuk atau akhir pekan mungkin berbeda dibandingkan dengan hari kerja. Untuk mendapatkan informasi yang lebih rinci dan penawaran terbaik, silakan cek di menu promo kami atau kunjungi website kami, karena kami secara berkala menawarkan promo dan diskon spesial sesuai dengan event tertentu.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-2 border border-blue-500 rounded overflow-hidden">
+        <button class="faq-toggle flex w-full justify-between items-center bg-blue-500 text-white px-4 py-3 focus:outline-none">
+          <span>Bagaimana dengan System Inul StarZ?</span>
+          <span class="text-xl font-bold">+</span>
+        </button>
+        <div class="hidden bg-white text-gray-800 px-4 py-3 leading-relaxed">
+          <p>
+            Sistem audio dan video kami secara rutin di-upgrade dengan teknologi terbaru untuk memastikan bahwa setiap momen karaoke Anda menjadi pengalaman yang tak terlupakan. Setiap upgrade tidak hanya meningkatkan kualitas suara dan visual, tetapi juga menambahkan fitur-fitur interaktif yang membuat penampilan Anda semakin hidup. Kami bekerja sama dengan penyedia teknologi terkemuka untuk memastikan bahwa sistem kami selalu mengikuti standar industri dan tren hiburan terkini. Selain itu, pilihan lagu yang tersedia di sistem kami juga selalu diperbarui secara berkala, sehingga Anda dapat menikmati lagu-lagu hits terbaru dan klasik favorit dengan kualitas audio terbaik. Dengan kombinasi inovasi teknologi dan update rutin, kami berkomitmen untuk memberikan pengalaman karaoke terbaik yang selalu segar dan menarik.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-2 border border-blue-500 rounded overflow-hidden">
+        <button class="faq-toggle flex w-full justify-between items-center bg-blue-500 text-white px-4 py-3 focus:outline-none">
+          <span>Bagaimana cara mendapatkan Member Card Inul StarZ?</span>
+          <span class="text-xl font-bold">+</span>
+        </button>
+        <div class="hidden bg-white text-gray-800 px-4 py-3 leading-relaxed">
+          <p>
+            Untuk mendapatkan Member Card Inul StarZ, Anda cukup datang ke outlet kami dan mendaftar langsung di area front desk. Prosesnya cepat dan mudah! Dengan menjadi member, Anda akan menikmati berbagai keuntungan eksklusif seperti diskon spesial, welcome drink, dan fitur playlist pribadi melalui integrasi dengan Spotify. Yuk, jadi bagian dari komunitas Inul StarZ dan rasakan pengalaman karaoke yang lebih seru dan personal!
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-2 border border-blue-500 rounded overflow-hidden">
+        <button class="faq-toggle flex w-full justify-between items-center bg-blue-500 text-white px-4 py-3 focus:outline-none">
+          <span>Bagaimana cara request lagu favorit saya?</span>
+          <span class="text-xl font-bold">+</span>
+        </button>
+        <div class="hidden bg-white text-gray-800 px-4 py-3 leading-relaxed">
+          <p>
+            Request lagu kini semakin mudah di Inul StarZ! Anda bisa memilih langsung dari sistem digital kami di dalam ruangan atau melalui aplikasi yang terhubung dengan playlist Spotify Anda. Kami juga selalu update lagu-lagu terbaru setiap minggu, jadi lagu favorit Anda pasti tersedia! Rasakan kemudahan dan kenyamanan dalam bernyanyi sesuai selera Anda, kapan pun dan di mana pun.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="fixed bottom-4 right-4 z-50">
+      <a href="contact.html" class="bg-green-500 p-3 rounded-full shadow-lg flex items-center justify-center w-14 h-14">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8" />
+      </a>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const dashboard = document.getElementById("dashboard");
+
+      menuBtn.addEventListener("click", () => {
+        dashboard.classList.remove("translate-x-full");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        dashboard.classList.add("translate-x-full");
+      });
+
+      const faqToggles = document.querySelectorAll(".faq-toggle");
+      faqToggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const content = toggle.nextElementSibling;
+          content.classList.toggle("hidden");
+
+          const icon = toggle.querySelector("span:last-child");
+          icon.textContent = content.classList.contains("hidden") ? "+" : "-";
+        });
+      });
+    </script>
+  </body>
+</html>
