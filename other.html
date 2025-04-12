@@ -16,6 +16,7 @@
       background-size: 300% 300%;
       animation: gradientMove 5s ease infinite;
     }
+
     @keyframes gradient-x {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -24,6 +25,7 @@
       background-size: 300% 300%;
       animation: gradient-x 5s ease infinite;
     }
+
     @keyframes gradient-text {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -33,11 +35,14 @@
       background-size: 200% 200%;
       animation: gradient-text 10s ease infinite;
     }
+
+
   </style>
 </head>
 
 <body class="bg-gray-900 min-h-screen relative text-white">
 
+  <!-- Navbar -->
   <nav class="bg-gradient-to-r from-purple-900 via-blue-900 via-green-900 via-brown-900 via-yellow-900 to-red-900 animate-gradient bg-[length:300%_300%] text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
     <div class="flex items-center gap-2">
       <img src="./image/logo.png" class="h-10 w-auto mix-blend-screen" alt="Logo Vizta" />
@@ -45,79 +50,55 @@
     <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
   </nav>
 
-  <div id="dashboard" class="fixed top-0 right-0 w-64 h-full bg-gradient-to-b from-black via-gray-900 via-gray-900 to-black text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+  <!-- Dashboard -->
+  <div id="dashboard" class="fixed top-0 right-0 w-64 h-full bg-gradient-to-b from-black via-gray-900 to-black text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
     <div class="p-4 flex justify-between items-center border-b border-black">
       <h2 class="text-xl font-bold">Dashboard</h2>
       <button id="closeBtn" class="text-xl">✖</button>
     </div>
-  
     <ul class="mt-4 space-y-2">
-      <li><a class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">HOME</a></li>
-      <li><a href="other.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">OTHER</a></li>
+      <li><a href="home.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">HOME</a></li>
+      <li><a class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">OTHER</a></li>
     </ul>
-  </div>  
-  
+  </div>
+
+  <!-- Hero Section -->
   <header class="relative w-full h-[400px] overflow-hidden pt-16">
     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-900 via-blue-900 via-green-900 via-brown-900 via-yellow-900 to-red-900 animate-gradient-x"></div>
     <div class="absolute inset-0 bg-black bg-opacity-40"></div>
     <div class="relative z-10 flex items-center justify-center h-full">
       <h1 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-black via-brown-900 via-red-900 via-gray-900 to-black animate-gradient-text drop-shadow-2xl">
         Hello Friend
-      </h1>    
+      </h1>
     </div>
   </header>
 
+  <!-- Skills Section -->
   <section class="py-16 bg-[#0c1120]">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center text-white mb-10">My Skills</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        
-        <!-- HTML -->
         <div class="bg-[#161d30] rounded-xl p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-16 h-16 mb-4">
           <p class="text-white font-semibold">HTML</p>
         </div>
-  
-        <!-- CSS -->
         <div class="bg-[#161d30] rounded-xl p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-16 h-16 mb-4">
           <p class="text-white font-semibold">CSS</p>
         </div>
-  
-        <!-- JavaScript -->
         <div class="bg-[#161d30] rounded-xl p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-16 h-16 mb-4">
           <p class="text-white font-semibold">JavaScript</p>
         </div>
-  
-        <!-- PHP -->
-        <div class="bg-[#161d30] rounded-xl p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-16 h-16 mb-4">
-          <p class="text-white font-semibold">PHP</p>
-        </div>
-  
-        <!-- Python -->
-        <div class="bg-[#161d30] rounded-xl p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-16 h-16 mb-4">
-          <p class="text-white font-semibold">Python</p>
-        </div>
-  
-        <!-- Bash -->
-        <div class="bg-[#161d30] rounded-xl p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash" class="w-16 h-16 mb-4">
-          <p class="text-white font-semibold">Bash</p>
-        </div>
-  
       </div>
     </div>
   </section>
 
+  <!-- Projects Section -->
   <section class="py-16 bg-[#0c1120]">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center text-white mb-10">My Project Website</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        
-        <!-- Project Card 1 -->
         <a href="https://dardcor.github.io/" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
           <img src="./image/project1.png" alt="Project 1" class="w-full h-48 object-cover">
           <div class="p-4">
@@ -125,54 +106,107 @@
             <p class="text-gray-300 text-sm">Tempat Karaoke Paling Nyaman Yang Pernah Ada.</p>
           </div>
         </a>
-  
-        <!-- Project Card 2 -->
-        <a href="project2.html" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
-          <img src="https://via.placeholder.com/400x200.png?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
+        <a href="https://dardcor.github.io/" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
+          <img src="./image/project1.png" alt="Project 1" class="w-full h-48 object-cover">
           <div class="p-4">
-            <h3 class="text-white font-semibold text-lg mb-2">E-commerce Demo</h3>
-            <p class="text-gray-300 text-sm">Website toko online sederhana menggunakan HTML, CSS, dan JavaScript.</p>
+            <h3 class="text-white font-semibold text-lg mb-2">Inul StarZ</h3>
+            <p class="text-gray-300 text-sm">Tempat Karaoke Paling Nyaman Yang Pernah Ada.</p>
           </div>
         </a>
-  
-        <!-- Project Card 3 -->
-        <a href="project3.html" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
-          <img src="https://via.placeholder.com/400x200.png?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+        <a href="https://dardcor.github.io/" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
+          <img src="./image/project1.png" alt="Project 1" class="w-full h-48 object-cover">
           <div class="p-4">
-            <h3 class="text-white font-semibold text-lg mb-2">Blog Platform</h3>
-            <p class="text-gray-300 text-sm">Sistem blog dinamis dengan PHP dan MySQL, termasuk dashboard admin.</p>
+            <h3 class="text-white font-semibold text-lg mb-2">Inul StarZ</h3>
+            <p class="text-gray-300 text-sm">Tempat Karaoke Paling Nyaman Yang Pernah Ada.</p>
           </div>
         </a>
-  
       </div>
     </div>
   </section>
-  
-  
 
-<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+  <!-- Hacker Loader Overlay -->
+  <div id="hacker-loader" class="fixed inset-0 bg-black text-white font-mono p-4 z-[100] hidden flex items-start justify-center flex-col">
+    <pre id="loadingText" class="whitespace-pre-line text-left w-full max-w-xl mb-4 pl-8 text-sm sm:text-base md:text-lg"></pre>
+    <span class="cursor-blink text-2xl pl-8">█</span>
+  </div>
 
-<script>
-  const menuBtn = document.getElementById("menuBtn");
-  const closeBtn = document.getElementById("closeBtn");
-  const dashboard = document.getElementById("dashboard");
+  <!-- Script -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const dashboard = document.getElementById("dashboard");
 
-  menuBtn.addEventListener("click", () => {
-    dashboard.classList.remove("translate-x-full");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    dashboard.classList.add("translate-x-full");
-  });
-
-  const submenuToggles = document.querySelectorAll(".submenu-toggle");
-  submenuToggles.forEach(toggle => {
-    toggle.addEventListener("click", () => {
-      const submenu = toggle.nextElementSibling;
-      if (submenu) submenu.classList.toggle("hidden");
+    menuBtn.addEventListener("click", () => {
+      dashboard.classList.remove("translate-x-full");
     });
-  });
-</script>
+    closeBtn.addEventListener("click", () => {
+      dashboard.classList.add("translate-x-full");
+    });
 
+    const dashboardLinks = document.querySelectorAll("#dashboard a");
+    const hackerLoader = document.getElementById("hacker-loader");
+    const loadingText = document.getElementById("loadingText");
+
+    const loadingLines = [
+      "[+] Initializing system protocols...",
+      "[+] Connecting to secure server [192.168.0.101]...",
+      "[+] Handshaking with authentication daemon...",
+      "[+] Authenticating credentials [user: dardcor]...",
+      "[+] Authentication successful.",
+      "[+] Establishing encrypted tunnel...",
+      "[+] Tunnel established using AES-256 encryption.",
+      "[+] Scanning perimeter defenses...",
+      "[+] Firewall detected: FortiGate v7.2.3 — status: active.",
+      "[+] Executing firewall bypass script [bypass_v4.sh]...",
+      "[+] Firewall successfully bypassed.",
+      "[+] Elevating privileges to root...",
+      "[+] Access level escalated: root@mainframe.",
+      "[+] Injecting custom payload: phase_1.exe...",
+      "[+] Payload uploaded — initializing...",
+      "[+] System response detected — spoofing checksum...",
+      "[+] Checksum spoof successful. Integrity status: trusted.",
+      "[+] Downloading encrypted data packets (48.5MB)...",
+      "[+] Decrypting packets using RSA-4096...",
+      "[+] Data extraction complete — 128 files retrieved.",
+      "[+] Compiling interface modules...",
+      "[+] Injecting real-time visual layer...",
+      "[+] Synchronizing with local UI...",
+      "[+] System override complete.",
+      "[*] Launching main interface... Welcome back, Operative."
+    ];
+
+    function showHackerLoader(callback) {
+      hackerLoader.classList.remove("hidden");
+      hackerLoader.classList.add("active");
+      loadingText.innerText = "";
+      let index = 0;
+
+      function showNextLine() {
+        if (index < loadingLines.length) {
+          loadingText.innerText += loadingLines[index] + "\n";
+          index++;
+          setTimeout(showNextLine, 500);
+        } else {
+          setTimeout(() => {
+            hackerLoader.classList.remove("active");
+            hackerLoader.classList.add("hidden");
+            callback();
+          }, 1000);
+        }
+      }
+
+      showNextLine();
+    }
+
+    dashboardLinks.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const href = this.getAttribute("href");
+        showHackerLoader(() => {
+          window.location.href = href;
+        });
+      });
+    });
+  </script>
 </body>
 </html>

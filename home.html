@@ -144,8 +144,12 @@
   </div>
 </section>
 
-<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+<div id="hacker-loader" class="fixed inset-0 bg-black text-white font-mono p-4 z-[100] hidden flex items-start justify-center flex-col">
+  <pre id="loadingText" class="whitespace-pre-line text-left w-full max-w-xl mb-4 pl-8 text-sm sm:text-base md:text-lg"></pre>
+  <span class="cursor-blink text-2xl pl-8">█</span>
+</div>
 
+<!-- Script -->
 <script>
   const menuBtn = document.getElementById("menuBtn");
   const closeBtn = document.getElementById("closeBtn");
@@ -154,16 +158,72 @@
   menuBtn.addEventListener("click", () => {
     dashboard.classList.remove("translate-x-full");
   });
-
   closeBtn.addEventListener("click", () => {
     dashboard.classList.add("translate-x-full");
   });
 
-  const submenuToggles = document.querySelectorAll(".submenu-toggle");
-  submenuToggles.forEach(toggle => {
-    toggle.addEventListener("click", () => {
-      const submenu = toggle.nextElementSibling;
-      if (submenu) submenu.classList.toggle("hidden");
+  const dashboardLinks = document.querySelectorAll("#dashboard a");
+  const hackerLoader = document.getElementById("hacker-loader");
+  const loadingText = document.getElementById("loadingText");
+
+  const loadingLines = [
+    "[+] Initializing system protocols...",
+    "[+] Connecting to secure server [192.168.0.101]...",
+    "[+] Handshaking with authentication daemon...",
+    "[+] Authenticating credentials [user: dardcor]...",
+    "[+] Authentication successful.",
+    "[+] Establishing encrypted tunnel...",
+    "[+] Tunnel established using AES-256 encryption.",
+    "[+] Scanning perimeter defenses...",
+    "[+] Firewall detected: FortiGate v7.2.3 — status: active.",
+    "[+] Executing firewall bypass script [bypass_v4.sh]...",
+    "[+] Firewall successfully bypassed.",
+    "[+] Elevating privileges to root...",
+    "[+] Access level escalated: root@mainframe.",
+    "[+] Injecting custom payload: phase_1.exe...",
+    "[+] Payload uploaded — initializing...",
+    "[+] System response detected — spoofing checksum...",
+    "[+] Checksum spoof successful. Integrity status: trusted.",
+    "[+] Downloading encrypted data packets (48.5MB)...",
+    "[+] Decrypting packets using RSA-4096...",
+    "[+] Data extraction complete — 128 files retrieved.",
+    "[+] Compiling interface modules...",
+    "[+] Injecting real-time visual layer...",
+    "[+] Synchronizing with local UI...",
+    "[+] System override complete.",
+    "[*] Launching main interface... Welcome back, Operative."
+  ];
+
+  function showHackerLoader(callback) {
+    hackerLoader.classList.remove("hidden");
+    hackerLoader.classList.add("active");
+    loadingText.innerText = "";
+    let index = 0;
+
+    function showNextLine() {
+      if (index < loadingLines.length) {
+        loadingText.innerText += loadingLines[index] + "\n";
+        index++;
+        setTimeout(showNextLine, 500);
+      } else {
+        setTimeout(() => {
+          hackerLoader.classList.remove("active");
+          hackerLoader.classList.add("hidden");
+          callback();
+        }, 1000);
+      }
+    }
+
+    showNextLine();
+  }
+
+  dashboardLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      showHackerLoader(() => {
+        window.location.href = href;
+      });
     });
   });
 </script>
