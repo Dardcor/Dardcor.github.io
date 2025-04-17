@@ -52,8 +52,10 @@
     </div>
   
     <ul class="mt-4 space-y-2">
-      <li><a href="home.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">HOME</a></li>
-      <li><a href="other.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">OTHER</a></li>
+      <li><a href="home.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Home</a></li>
+      <li><a href="myassets.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">My Assets</a></li>
+      <li><a href="firstbook.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Book</a></li>
+      <li><a href="other.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Other</a></li>
     </ul>
   </div>  
   
@@ -204,13 +206,13 @@
       if (index < loadingLines.length) {
         loadingText.innerText += loadingLines[index] + "\n";
         index++;
-        setTimeout(showNextLine, 500);
+        setTimeout(showNextLine, 100);
       } else {
         setTimeout(() => {
           hackerLoader.classList.remove("active");
           hackerLoader.classList.add("hidden");
           callback();
-        }, 1000);
+        }, 500);
       }
     }
 

@@ -57,8 +57,9 @@
       <button id="closeBtn" class="text-xl">✖</button>
     </div>
     <ul class="mt-4 space-y-2">
-      <li><a href="home.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">HOME</a></li>
-      <li><a class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">OTHER</a></li>
+      <li><a href="home.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Home</a></li>
+      <li><a href="myassets.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">My Assets</a></li>
+      <li><a href="other.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Other</a></li>
     </ul>
   </div>
 
@@ -99,7 +100,7 @@
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center text-white mb-10">My Project Website</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <a href="https://dardcor.github.io/" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
+        <a href="https://louncher.github.io/" class="block bg-[#161d30] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform">
           <img src="./image/project1.png" alt="Project 1" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-white font-semibold text-lg mb-2">Inul StarZ</h3>
@@ -185,13 +186,13 @@
         if (index < loadingLines.length) {
           loadingText.innerText += loadingLines[index] + "\n";
           index++;
-          setTimeout(showNextLine, 500);
+          setTimeout(showNextLine, 100);
         } else {
           setTimeout(() => {
             hackerLoader.classList.remove("active");
             hackerLoader.classList.add("hidden");
             callback();
-          }, 1000);
+          }, 500);
         }
       }
 

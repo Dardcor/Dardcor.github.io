@@ -6,218 +6,645 @@
   <title>Dardcor</title>
   <link rel="icon" type="image/png" href="./image/logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @keyframes gradientMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .animate-gradient {
-      background-size: 300% 300%;
-      animation: gradientMove 15s ease infinite;
+    .animate-gradient { 
+      background-size: 300% 300%; 
+      animation: gradientMove 15s ease infinite; 
     }
+    
     @keyframes gradient-x {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
-    .animate-gradient-x {
-      background-size: 300% 300%;
-      animation: gradient-x 15s ease infinite;
+    .animate-gradient-x { 
+      background-size: 300% 300%; 
+      animation: gradient-x 15s ease infinite; 
     }
+    
     @keyframes gradient-text {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .animate-gradient-text {
-      background-size: 200% 200%;
-      animation: gradient-text 5s ease infinite;
+    .animate-gradient-text { 
+      background-size: 200% 200%; 
+      animation: gradient-text 5s ease infinite; 
+    }
+    
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-slow { 
+      animation: spin-slow 2.5s linear infinite; 
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hover-3d { 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    .hover-3d:hover { 
+      transform: translateY(-5px) scale(1.02); 
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .floating { 
+      animation: float 3s ease-in-out infinite; 
+    }
+    
+    .glow-text { 
+      text-shadow: 
+        0 0 15px rgba(255,255,255,0.7),
+        0 0 25px rgba(255,255,255,0.5),
+        0 0 40px rgba(255,255,255,0.3);
+    }
+    
+    .glow-box {
+      box-shadow: 
+        0 0 15px rgba(100, 200, 255, 0.3),
+        0 0 30px rgba(100, 200, 255, 0.2);
+    }
+    
+    .particle {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
+    
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.2);
+      animation: rise 8s ease-in infinite;
+      z-index: 0;
+    }
+    
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 25%;
+      width: 20%;
+      height: 20%;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+    
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1) translateX(0);
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateX(10px);
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.2) translateX(20px);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse 3s ease infinite;
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-10px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    
+    .neon-border {
+      position: relative;
+      border: 2px solid transparent;
+    }
+    
+    .neon-border::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc, #ffcc00);
+      background-size: 300% 300%;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s, background-position 0.3s;
+    }
+    
+    .neon-border:hover::after {
+      opacity: 1;
+      animation: gradientMove 4s ease infinite;
+    }
+    
+    .icon-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .icon-hover:hover {
+      transform: translateY(-5px) rotate(5deg) scale(1.1);
+      filter: drop-shadow(0 5px 15px rgba(100, 200, 255, 0.5));
+    }
+    
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: scale(1.2) rotate(10deg);
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
-
-<body class="bg-gray-900 min-h-screen relative text-white">
-
-<!-- Navbar -->
-<nav class="bg-gradient-to-r from-purple-900 via-blue-900 via-green-900 via-brown-900 via-yellow-900 to-red-900 animate-gradient bg-[length:300%_300%] text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
-  <div class="flex items-center gap-2">
-    <img src="./image/logo.png" class="h-10 w-auto mix-blend-screen" alt="Logo" />
+<body class="bg-gray-900 min-h-screen relative text-white overflow-x-hidden">
+  <nav class="glass-effect bg-gradient-to-r from-purple-900 via-blue-900 to-red-900 animate-gradient text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-xl">
+    <div class="flex items-center gap-2">
+      <img src="./image/logo.png" class="h-10 w-auto mix-blend-screen hover-3d" alt="Logo" />
+      <span class="text-xl font-bold glow-text">Dardcor</span>
+    </div>
+    <button id="loginBtn" class="glass-effect hover:bg-gray-800/60 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 neon-border flex items-center gap-2">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </button>
+  </nav>
+  
+  <header class="relative w-full h-[500px] overflow-hidden pt-16">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-900 via-blue-900 to-red-900 animate-gradient-x"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="absolute top-20 left-10 w-8 h-8 bg-purple-500 rounded-full opacity-30 floating"></div>
+    <div class="absolute top-1/3 right-20 w-12 h-12 bg-blue-500 rounded-full opacity-20 floating" style="animation-delay: -1s"></div>
+    <div class="absolute bottom-20 left-1/4 w-10 h-10 bg-yellow-500 rounded-full opacity-25 floating" style="animation-delay: -2s"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-16 h-16 bg-pink-500 rounded-full opacity-15 floating" style="animation-delay: -1.5s"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white animate-gradient-text glow-text mb-6">I'm Dardcor</h1>
+      <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-8">Developer • Designer • Tech Enthusiast</p>
+      <div class="flex gap-4">
+        <a href="#" class="glass-effect hover-3d px-6 py-3 rounded-full font-medium flex items-center gap-2">
+          <i class="fas fa-code"></i> My Projects
+        </a>
+        <a href="#" class="glass-effect hover-3d px-6 py-3 rounded-full font-medium flex items-center gap-2">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <div id="particles-js" class="absolute inset-0 pointer-events-none"></div>
+  <div id="bubbles-container" class="absolute inset-0 pointer-events-none z-0 overflow-hidden"></div>
+  
+  <section class="bg-gray-900 py-16 relative overflow-hidden">
+    <div class="absolute -top-20 -left-20 w-64 h-64 bg-purple-600 rounded-full filter blur-3xl opacity-10"></div>
+    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-600 rounded-full filter blur-3xl opacity-10"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <h2 class="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white animate-gradient-text glow-text">My Quick Links</h2>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
+        <a href="https://ethol.pens.ac.id/" target="_blank" rel="noopener noreferrer" class="icon-wrapper block text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center shadow-lg icon-hover">
+            <i class="fas fa-graduation-cap text-2xl text-white"></i>
+          </div>
+          <p class="mt-3 text-gray-300 font-medium">Ethol</p>
+        </a>
+        
+        <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer" class="icon-wrapper block text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-green-600 to-teal-400 flex items-center justify-center shadow-lg icon-hover">
+            <i class="fas fa-robot text-2xl text-white"></i>
+          </div>
+          <p class="mt-3 text-gray-300 font-medium">GPT</p>
+        </a>
+        
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="icon-wrapper block text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-gray-800 to-gray-600 flex items-center justify-center shadow-lg icon-hover">
+            <i class="fab fa-github text-2xl text-white"></i>
+          </div>
+          <p class="mt-3 text-gray-300 font-medium">GitHub</p>
+        </a>
+        
+        <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="icon-wrapper block text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-green-600 to-emerald-400 flex items-center justify-center shadow-lg icon-hover">
+            <i class="fab fa-whatsapp text-2xl text-white"></i>
+          </div>
+          <p class="mt-3 text-gray-300 font-medium">WhatsApp</p>
+        </a>
+        
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="icon-wrapper block text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-pink-600 to-purple-400 flex items-center justify-center shadow-lg icon-hover">
+            <i class="fab fa-instagram text-2xl text-white"></i>
+          </div>
+          <p class="mt-3 text-gray-300 font-medium">Instagram</p>
+        </a>
+        
+        <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" class="icon-wrapper block text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center shadow-lg icon-hover">
+            <i class="fab fa-youtube text-2xl text-white"></i>
+          </div>
+          <p class="mt-3 text-gray-300 font-medium">Youtube</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-gray-900 py-20 relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-64 h-64 bg-pink-600 rounded-full filter blur-3xl opacity-10"></div>
+    <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-cyan-600 rounded-full filter blur-3xl opacity-10"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <h2 class="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white animate-gradient-text glow-text">Featured Projects</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass-effect rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-gradient-to-br from-purple-600 to-blue-500 rounded-xl mb-4 flex items-center justify-center">
+            <i class="fas fa-code text-6xl text-white opacity-80"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Web Framework</h3>
+          <p class="text-gray-300 mb-4">A modern web framework built for performance and developer experience.</p>
+          <div class="flex gap-2">
+            <span class="text-xs px-2 py-1 bg-purple-900/50 rounded-full">JavaScript</span>
+            <span class="text-xs px-2 py-1 bg-blue-900/50 rounded-full">Node.js</span>
+          </div>
+        </div>
+        
+        <div class="glass-effect rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-gradient-to-br from-green-600 to-teal-500 rounded-xl mb-4 flex items-center justify-center">
+            <i class="fas fa-robot text-6xl text-white opacity-80"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">AI Assistant</h3>
+          <p class="text-gray-300 mb-4">An intelligent assistant that helps with daily tasks and productivity.</p>
+          <div class="flex gap-2">
+            <span class="text-xs px-2 py-1 bg-green-900/50 rounded-full">Python</span>
+            <span class="text-xs px-2 py-1 bg-teal-900/50 rounded-full">TensorFlow</span>
+          </div>
+        </div>
+        
+        <div class="glass-effect rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-gradient-to-br from-red-600 to-orange-500 rounded-xl mb-4 flex items-center justify-center">
+            <i class="fas fa-mobile-alt text-6xl text-white opacity-80"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Mobile App</h3>
+          <p class="text-gray-300 mb-4">A cross-platform mobile application with beautiful UI and smooth UX.</p>
+          <div class="flex gap-2">
+            <span class="text-xs px-2 py-1 bg-red-900/50 rounded-full">React Native</span>
+            <span class="text-xs px-2 py-1 bg-orange-900/50 rounded-full">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-gray-900 py-20 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+      <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white animate-gradient-text glow-text mb-8">About Me</h2>
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="lg:w-1/3">
+          <div class="relative mx-auto w-64 h-64 rounded-full overflow-hidden border-4 border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-105">
+            <img src="./image/profile.jpg" alt="Profile" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-6">
+              <div class="text-center">
+                <h3 class="text-2xl font-bold">Dardcor</h3>
+                <p class="text-cyan-300">Full Stack Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:w-2/3 text-left">
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Hello! I'm Dardcor, a passionate developer and tech enthusiast with over 5 years of experience in building web and mobile applications. I specialize in JavaScript frameworks, UI/UX design, and cloud technologies.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            My journey in tech started when I was 15, and since then I've worked on numerous projects ranging from small business websites to enterprise applications. I love solving complex problems and creating elegant, efficient solutions.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-8">
+            When I'm not coding, you can find me hiking in the mountains, reading sci-fi novels, or experimenting with new cooking recipes. I'm also an active open-source contributor and tech community mentor.
+          </p>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="hover-3d inline-flex items-center bg-gray-800/60 hover:bg-gray-700/80 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300">
+              <i class="fab fa-github mr-2 text-xl"></i> GitHub
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="hover-3d inline-flex items-center bg-gray-800/60 hover:bg-gray-700/80 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300">
+              <i class="fab fa-instagram mr-2 text-xl"></i> Instagram
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="hover-3d inline-flex items-center bg-gray-800/60 hover:bg-gray-700/80 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300">
+              <i class="fab fa-linkedin mr-2 text-xl"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-gray-900 py-16 relative overflow-hidden">
+    <div class="absolute -top-20 left-1/2 w-64 h-64 bg-purple-600 rounded-full filter blur-3xl opacity-10"></div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 bg-cyan-600 rounded-full filter blur-3xl opacity-10"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <h2 class="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white animate-gradient-text glow-text">My Skills</h2>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div class="glass-effect p-4 rounded-xl text-center hover-3d">
+          <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
+            <i class="fab fa-js text-3xl text-white"></i>
+          </div>
+          <h3 class="font-medium">JavaScript</h3>
+        </div>
+        
+        <div class="glass-effect p-4 rounded-xl text-center hover-3d">
+          <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center">
+            <i class="fab fa-react text-3xl text-white"></i>
+          </div>
+          <h3 class="font-medium">React</h3>
+        </div>
+        
+        <div class="glass-effect p-4 rounded-xl text-center hover-3d">
+          <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center">
+            <i class="fab fa-node-js text-3xl text-white"></i>
+          </div>
+          <h3 class="font-medium">Node.js</h3>
+        </div>
+        
+        <div class="glass-effect p-4 rounded-xl text-center hover-3d">
+          <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center">
+            <i class="fab fa-vuejs text-3xl text-white"></i>
+          </div>
+          <h3 class="font-medium">Vue.js</h3>
+        </div>
+        
+        <div class="glass-effect p-4 rounded-xl text-center hover-3d">
+          <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-pink-500 to-red-500 rounded-full flex items-center justify-center">
+            <i class="fab fa-python text-3xl text-white"></i>
+          </div>
+          <h3 class="font-medium">Python</h3>
+        </div>
+        
+        <div class="glass-effect p-4 rounded-xl text-center hover-3d">
+          <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-gray-500 to-gray-800 rounded-full flex items-center justify-center">
+            <i class="fas fa-database text-3xl text-white"></i>
+          </div>
+          <h3 class="font-medium">SQL</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="bg-gray-900/80 border-t border-gray-800 py-12 relative overflow-hidden">
+    <div class="absolute -top-20 left-1/4 w-64 h-64 bg-blue-600 rounded-full filter blur-3xl opacity-10"></div>
+    <div class="absolute bottom-10 right-1/4 w-64 h-64 bg-purple-600 rounded-full filter blur-3xl opacity-10"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center gap-2 mb-6 md:mb-0">
+          <img src="./image/logo.png" class="h-10 w-auto mix-blend-screen" alt="Logo" />
+          <span class="text-xl font-bold glow-text">Dardcor</span>
+        </div>
+        
+        <div class="flex gap-6 mb-6 md:mb-0">
+          <a href="#" class="social-icon text-2xl text-gray-400 hover:text-white">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-icon text-2xl text-gray-400 hover:text-white">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon text-2xl text-gray-400 hover:text-white">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" class="social-icon text-2xl text-gray-400 hover:text-white">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+        
+        <div class="text-gray-400 text-sm">
+          © 2025 Dardcor. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden">
+    <div class="glass-effect rounded-2xl p-8 w-full max-w-md shadow-2xl relative border border-white/10 mx-4 glow-box">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl transition-colors">&times;</button>
+      <h2 class="text-2xl font-bold mb-6 text-center glow-text">Welcome Back</h2>
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label for="username" class="block mb-2 text-sm font-light text-cyan-200 text-left">Username</label>
+          <div class="relative">
+            <input type="text" id="username" class="w-full px-4 py-3 bg-gray-800/60 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all" placeholder="Enter username" required />
+            <i class="fas fa-user absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div>
+          <label for="password" class="block mb-2 text-sm font-light text-cyan-200 text-left">Password</label>
+          <div class="relative">
+            <input type="password" id="password" class="w-full px-4 py-3 bg-gray-800/60 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all" placeholder="Enter password" required />
+            <i class="fas fa-lock absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+        <p id="errorMessage" class="text-red-400 text-sm mt-2 text-center hidden">⚠️ Invalid credentials</p>
+      </form>
+    </div>
   </div>
-  <button id="loginBtn" class="bg-black hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none">
-    Login
-  </button>
-</nav>
-
-<!-- Header -->
-<header class="relative w-full h-[400px] overflow-hidden pt-16">
-  <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-900 via-blue-900 via-green-900 via-brown-900 via-yellow-900 to-red-900 animate-gradient-x"></div>
-  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-  <div class="relative z-10 flex items-center justify-center h-full">
-    <h1 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-black via-brown-900 via-red-900 via-gray-900 to-black animate-gradient-text drop-shadow-2xl">
-      I'm Dardcor
-    </h1>
+  
+  <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+    <div class="flex flex-col items-center space-y-4">
+      <div class="relative w-24 h-24">
+        <div class="absolute top-0 left-0 w-full h-full border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+        <div class="absolute top-3 left-3 w-18 h-18 border-4 border-b-transparent border-purple-500 rounded-full animate-spin-slow"></div>
+        <div class="absolute top-6 left-6 w-12 h-12 border-4 border-t-transparent border-cyan-500 rounded-full animate-spin" style="animation-duration: 1.5s"></div>
+      </div>
+      <p class="text-white text-xl font-semibold animate-pulse tracking-widest glow-text">Initializing...</p>
+      <div class="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+        <div id="progressBar" class="h-full bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" style="width: 0%"></div>
+      </div>
+    </div>
   </div>
-</header>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginBtn = document.getElementById('loginBtn');
+      const loginModal = document.getElementById('loginModal');
+      const closeModalBtn = document.getElementById('closeModal');
+      const loginForm = document.getElementById('loginForm');
+      const errorMessage = document.getElementById('errorMessage');
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      const progressBar = document.getElementById('progressBar');
 
-<section class="bg-gray-900 py-12">
-  <div class="max-w-6xl mx-auto px-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 text-center">
-    <a href="https://ethol.pens.ac.id/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-white flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/ethol.png" alt="Ethol Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">Ethol</p>
-    </a>
-    <a href="https://chat.openai.com/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/gpt.png" alt="GPT Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">GPT</p>
-    </a>
-    <a href="https://chat.qwen.ai/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/qwen.png" alt="Qwen Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">Qwen AI</p>
-    </a>
-    <a href="https://chat.deepseek.com/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/deepseek.png" alt="DeepSeek Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">DeepSeek</p>
-    </a>
-    <a href="https://www.perplexity.ai/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/perplexity.png" alt="Perplexity Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">Perplexity</p>
-    </a>
-    <a href="https://www.blackbox.ai/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/blackbox.png" alt="Blackbox Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">Blackbox</p>
-    </a>
-    <a href="https://github.com/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/github.png" alt="GitHub Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">GitHub</p>
-    </a>
-    <a href="https://web.whatsapp.com/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/whatsapp.png" alt="WhatsApp Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">WhatsApp</p>
-    </a>
-    <a href="https://www.speedtest.net/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/speedtest.png" alt="SpeedTest Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">SpeedTest</p>
-    </a>
-    <a href="https://www.tiktok.com/foryou" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/tiktok.png" alt="TikTok Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">TikTok</p>
-    </a>
-    <a href="https://www.instagram.com/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/instagram.png" alt="Instagram Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">Instagram</p>
-    </a>
-    <a href="https://youtube.com/" target="_blank" class="icon-wrapper block text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-green-800 flex items-center justify-center shadow-lg hover:scale-110 transition">
-        <img src="./image/youtube.png" alt="YouTube Icon" class="h-full w-full object-cover rounded-full">
-      </div>
-      <p class="mt-2">Youtube</p>
-    </a>
-  </div>
-</section>
+      loginBtn.addEventListener('click', () => {
+        loginModal.classList.remove('hidden');
+        errorMessage.classList.add('hidden');
+      });
 
-<!-- Modal Login -->
-<div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden">
-  <div class="bg-gray-900 text-white rounded-xl p-6 w-80 shadow-2xl relative">
-    <button id="closeModal" class="absolute top-2 right-3 text-gray-400 hover:text-white text-2xl">&times;</button>
-    <h2 class="text-2xl font-bold mb-5 text-center">Login</h2>
-    <form id="loginForm" class="space-y-4">
-      <div>
-        <label for="username" class="block mb-1 text-sm font-medium">Username</label>
-        <input type="text" id="username" class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter username" required />
-      </div>
-      <div>
-        <label for="password" class="block mb-1 text-sm font-medium">Password</label>
-        <input type="password" id="password" class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter password" required />
-      </div>
-      <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded-md transition duration-200">Login</button>
-      <p id="errorMessage" class="text-red-500 text-sm mt-1 text-center hidden">Username atau password salah.</p>
-    </form>
-  </div>
-</div>
+      closeModalBtn.addEventListener('click', () => loginModal.classList.add('hidden'));
 
-<!-- Overlay -->
-<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        
+        if (username === "Dardcor" && password === "Dardcor") {
+          errorMessage.classList.add('hidden');
+          loginModal.classList.add('hidden');
+          loadingOverlay.classList.remove('hidden');
+          
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += Math.random() * 10;
+            if (progress > 100) progress = 100;
+            progressBar.style.width = `${progress}%`;
+            
+            if (progress === 100) {
+              clearInterval(interval);
+              createBubbleStorm();
+              setTimeout(() => { 
+                window.location.href = "home.html";
+              }, 500);
+            }
+          }, 200);
+        } else {
+          errorMessage.classList.remove('hidden');
+          document.getElementById('password').value = '';
+          shakeModal();
+        }
+      });
 
-<div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  <div class="flex flex-col items-center">
-    <svg class="animate-spin h-12 w-12 text-white mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-    </svg>
-    <p class="text-white text-lg font-semibold">Loading Sistem...</p>
-  </div>
-</div>
+      function shakeModal() {
+        loginModal.animate([
+          { transform: 'translateX(0)' },
+          { transform: 'translateX(-10px)' },
+          { transform: 'translateX(10px)' },
+          { transform: 'translateX(0)' }
+        ], {
+          duration: 300,
+          iterations: 2
+        });
+      }
 
-<!-- Script -->
-<script>
-  const loginBtn = document.getElementById('loginBtn');
-  const loginModal = document.getElementById('loginModal');
-  const overlay = document.getElementById('overlay');
-  const closeModalBtn = document.getElementById('closeModal');
-  const loginForm = document.getElementById('loginForm');
-  const errorMessage = document.getElementById('errorMessage');
-  const loadingOverlay = document.getElementById('loadingOverlay');
+      window.addEventListener('click', (e) => {
+        if (e.target === loginModal) loginModal.classList.add('hidden');
+      });
 
-  loginBtn.addEventListener('click', () => {
-    loginModal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-    errorMessage.classList.add('hidden');
-  });
+      function createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 8 + 4;
+        const color = `hsla(${Math.random() * 360}, 100%, 70%, ${Math.random()})`;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.background = color;
 
-  closeModalBtn.addEventListener('click', () => {
-    loginModal.classList.add('hidden');
-    overlay.classList.add('hidden');
-  });
+        const animation = particle.animate([
+          { transform: `translate(0, 0) scale(1)`, opacity: 1 },
+          { transform: `translate(${Math.random() * 150 - 75}px, ${Math.random() * 150 - 75}px) scale(0)`, opacity: 0 }
+        ], { 
+          duration: 1500 + Math.random() * 1000, 
+          easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+        });
 
-  window.addEventListener('click', (e) => {
-    if (e.target === loginModal || e.target === overlay) {
-      loginModal.classList.add('hidden');
-      overlay.classList.add('hidden');
-    }
-  });
+        animation.onfinish = () => particle.remove();
+        document.getElementById('particles-js').appendChild(particle);
+      }
 
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+      function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = Math.random() * 40 + 20;
+        const left = Math.random() * window.innerWidth;
+        const duration = 5 + Math.random() * 10;
+        const delay = Math.random() * 5;
+        
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${left}px`;
+        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.animationDelay = `${delay}s`;
+        bubble.style.opacity = 0.2 + Math.random() * 0.5;
+        
+        document.getElementById('bubbles-container').appendChild(bubble);
+        
+        setTimeout(() => bubble.remove(), duration * 1000);
+      }
+      
+      function createBubbleStorm() {
+        for (let i = 0; i < 100; i++) {
+          setTimeout(() => {
+            createBubble();
+            if (i % 3 === 0) {
+              setTimeout(createBubble, 200);
+              setTimeout(createBubble, 400);
+            }
+          }, i * 50);
+        }
+      }
 
-    if (username === "Dardcor" && password === "Dardcor") {
-      errorMessage.classList.add('hidden');
-      loginModal.classList.add('hidden');
-      overlay.classList.add('hidden');
-      loadingOverlay.classList.remove('hidden');
+      document.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.6) createParticle(e.clientX, e.clientY);
+      });
 
-      // Simulasi loading
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 2000);
-    } else {
-      errorMessage.classList.remove('hidden');
-    }
-  });
-</script>
-
-
+      setInterval(createBubble, 800);
+      
+      for (let i = 0; i < 15; i++) {
+        setTimeout(createBubble, i * 500);
+      }
+      
+      document.querySelectorAll('.card-hover').forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
 </body>
 </html>
