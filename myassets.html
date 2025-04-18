@@ -6,92 +6,652 @@
   <title>Dardcor</title>
   <link rel="icon" type="image/png" href="./image/logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .hover-3d {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-3d:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .glow-text {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+    .animate-gradient {
+      background-size: 300% 300%;
+      animation: gradient 8s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .cursor-blink {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .dashboard-item {
+      transition: all 0.3s ease;
+    }
+    .dashboard-item:hover {
+      transform: translateX(5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .hexagon {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .neon-text {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+    }
+    .grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen relative">
-
-  <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-purple-900 via-blue-900 via-green-900 via-brown-900 via-yellow-900 to-red-900 animate-gradient bg-[length:300%_300%] text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-md">
-    <div class="flex items-center gap-2">
-      <img src="./image/logo.png" class="h-10 w-auto mix-blend-screen" alt="Logo Vizta" />
-    </div>
-    <button id="menuBtn" class="text-white text-2xl focus:outline-none">☰</button>
-  </nav>
-
-  <!-- Dashboard (Sidebar) -->
-  <div id="dashboard" class="fixed top-0 right-0 w-64 h-full bg-gradient-to-b from-black via-gray-900 via-gray-900 to-black text-white shadow-lg transform translate-x-full transition-transform will-change-transform duration-300 z-50">
-    <div class="p-4 flex justify-between items-center border-b border-black">
-      <h2 class="text-xl font-bold">Dashboard</h2>
-      <button id="closeBtn" class="text-xl">✖</button>
-    </div>
-  
-    <ul class="mt-4 space-y-2">
-      <li><a href="home.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Home</a></li>
-      <li><a href="myassets.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">My Assets</a></li>
-      <li><a href="other.html" class="block px-4 py-2 rounded-md bg-gray-900 hover:bg-gray-500">Other</a></li>
-    </ul>
+<body class="bg-gray-900 min-h-screen relative text-white overflow-x-hidden grid-pattern">
+  <!-- Floating particles background -->
+  <div class="fixed inset-0 overflow-hidden z-0">
+    <div class="absolute top-1/4 left-1/4 w-3 h-3 bg-purple-500 rounded-full opacity-50 floating" style="animation-delay: 0s;"></div>
+    <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-500 rounded-full opacity-50 floating" style="animation-delay: 0.5s;"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-4 h-4 bg-cyan-500 rounded-full opacity-50 floating" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-pink-500 rounded-full opacity-50 floating" style="animation-delay: 1.5s;"></div>
   </div>
 
-  <main class="pt-20 pb-16 px-6 md:px-12">
+  <nav class="glass-effect bg-gradient-to-r from-purple-900 via-blue-900 to-red-900 animate-gradient text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-xl">
+    <div class="flex items-center gap-2">
+      <div class="hexagon bg-gradient-to-br from-purple-600 to-blue-600 p-1 hover-3d">
+        <img src="./image/logo.png" class="h-8 w-auto mix-blend-screen" alt="Logo" />
+      </div>
+      <span class="text-xl font-bold glow-text neon-text">Dardcor</span>
+    </div>
+    <button id="menuBtn" class="text-white text-2xl focus:outline-none hover:text-cyan-400 transition-colors relative group">
+      ☰
+      <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+    </button>
+  </nav>
+
+  <div id="dashboard" class="fixed top-0 right-0 w-72 h-full bg-gradient-to-b from-gray-900/90 via-gray-900/95 to-gray-900 text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50 border-l border-gray-700/50 backdrop-blur-md">
+    <div class="p-4 flex justify-between items-center border-b border-gray-700/50">
+      <h2 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">Dashboard</h2>
+      <button id="closeBtn" class="text-xl hover:text-cyan-400 transition-colors transform hover:rotate-90">✖</button>
+    </div>
+  
+    <ul class="mt-4 space-y-1 p-2">
+      <li><a href="home.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-cyan-400">
+        <i class="fas fa-home text-cyan-400"></i> Home
+      </a></li>
+      <li><a href="myassets.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-blue-400 bg-gray-800/30">
+        <i class="fas fa-folder text-blue-400"></i> My Assets
+      </a></li>
+      <li><a href="motivation.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-red-400">
+        <i class="fas fa-fire text-red-400"></i> Motivation
+      </a></li>
+      <li><a href="analytics.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-green-400">
+        <i class="fas fa-chart-line text-green-400"></i> Analytics
+      </a></li>
+      <li><a href="settings.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-yellow-400">
+        <i class="fas fa-cog text-yellow-400"></i> Settings
+      </a></li>
+    </ul>
+    
+    <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-700/50 bg-gradient-to-r from-gray-800/50 to-gray-900/50">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center shadow-lg pulse">
+          <span class="font-bold">DC</span>
+        </div>
+        <div>
+          <p class="font-medium">Dardcor</p>
+          <p class="text-xs text-gray-400">Premium Member</p>
+        </div>
+      </div>
+      <button class="mt-3 w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity text-sm flex items-center justify-center gap-2">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </div>
+
+  <main class="pt-20 pb-16 px-6 md:px-12 relative z-10">
+    <!-- Animated header section -->
+    <section class="mb-12 text-center">
+      <div class="inline-block relative">
+        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 mb-4 relative z-10">
+          My Assets
+        </h1>
+        <div class="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+      </div>
+      <p class="text-gray-400 max-w-2xl mx-auto">Track and manage all your financial assets in one secure place with real-time updates and analytics.</p>
+    </section>
+
+    <!-- Asset cards with improved design -->
     <section class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-purple-600 mb-4 text-center">My Assets</h1>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-          <img src="./image/dana.png" alt="Logo Pengeluaran" class="mx-auto mb-2 h-12 w-auto">
-          <p class="text-gray-400 mt-2">Saldo Dana Anda :</p>
-          <h2 class="text-2xl font-bold text-blue-500">Rp 500.000</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl hover-3d border border-gray-700/50 relative overflow-hidden">
+          <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-600/10 rounded-full"></div>
+          <div class="flex items-center justify-center mb-4">
+            <div class="bg-blue-900/30 p-3 rounded-xl">
+              <img src="./image/dana.png" alt="Dana" class="h-10 w-auto">
+            </div>
+          </div>
+          <p class="text-gray-400 text-center">Saldo Dana</p>
+          <h2 class="text-2xl font-bold text-blue-400 text-center mb-4">Rp 500.000</h2>
+          <button class="w-full bg-blue-600/50 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-all border border-blue-500/30 hover:border-blue-400 flex items-center justify-center gap-2">
+            <i class="fas fa-exchange-alt"></i> Transfer
+          </button>
         </div>
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-          <img src="./image/seabank.png" alt="Logo Pendapatan" class="mx-auto mb-2 h-12 w-auto">
-          <p class="text-gray-400 mt-2">Saldo Seabank Anda :</p>
-          <h2 class="text-2xl font-bold text-orange-500">Rp 250.000</h2>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl hover-3d border border-gray-700/50 relative overflow-hidden">
+          <div class="absolute -right-6 -top-6 w-24 h-24 bg-orange-600/10 rounded-full"></div>
+          <div class="flex items-center justify-center mb-4">
+            <div class="bg-orange-900/30 p-3 rounded-xl">
+              <img src="./image/seabank.png" alt="Seabank" class="h-10 w-auto">
+            </div>
+          </div>
+          <p class="text-gray-400 text-center">Saldo Seabank</p>
+          <h2 class="text-2xl font-bold text-orange-400 text-center mb-4">Rp 250.000</h2>
+          <button class="w-full bg-orange-600/50 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition-all border border-orange-500/30 hover:border-orange-400 flex items-center justify-center gap-2">
+            <i class="fas fa-exchange-alt"></i> Transfer
+          </button>
         </div>
-        <div class="bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-          <img src="./image/tabungan.png" alt="Logo Tabungan" class="mx-auto mb-2 h-12 w-auto">
-          <p class="text-gray-400 mt-2">Tabungan Anda :</p>
-          <h2 class="text-2xl font-bold text-white">Rp 850.000</h2>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl hover-3d border border-gray-700/50 relative overflow-hidden">
+          <div class="absolute -right-6 -top-6 w-24 h-24 bg-purple-600/10 rounded-full"></div>
+          <div class="flex items-center justify-center mb-4">
+            <div class="bg-purple-900/30 p-3 rounded-xl">
+              <img src="./image/tabungan.png" alt="Tabungan" class="h-10 w-auto">
+            </div>
+          </div>
+          <p class="text-gray-400 text-center">Tabungan</p>
+          <h2 class="text-2xl font-bold text-purple-400 text-center mb-4">Rp 850.000</h2>
+          <button class="w-full bg-purple-600/50 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-all border border-purple-500/30 hover:border-purple-400 flex items-center justify-center gap-2">
+            <i class="fas fa-plus"></i> Add Money
+          </button>
+        </div>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl hover-3d border border-gray-700/50 relative overflow-hidden">
+          <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-600/10 rounded-full"></div>
+          <div class="flex items-center justify-center mb-4">
+            <div class="bg-green-900/30 p-3 rounded-xl">
+              <img src="./image/investment.png" alt="Investment" class="h-10 w-auto">
+            </div>
+          </div>
+          <p class="text-gray-400 text-center">Investments</p>
+          <h2 class="text-2xl font-bold text-green-400 text-center mb-4">Rp 1.250.000</h2>
+          <button class="w-full bg-green-600/50 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-all border border-green-500/30 hover:border-green-400 flex items-center justify-center gap-2">
+            <i class="fas fa-chart-line"></i> Track
+          </button>
         </div>
       </div>
     </section>
 
+    <!-- Transactions section with improved design -->
     <section class="mb-12">
-      <h2 class="text-3xl font-semibold text-purple-600 text-center mb-6">Transaksi Terbaru</h2>
-      <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-700">
-          <thead>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <div>
+          <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Recent Transactions</h2>
+          <p class="text-gray-400">Your last 15 financial activities</p>
+        </div>
+        <div class="flex gap-3">
+          <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg hover:shadow-purple-500/20">
+            <i class="fas fa-plus"></i> Add Transaction
+          </button>
+          <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2 border border-gray-600">
+            <i class="fas fa-filter"></i> Filter
+          </button>
+        </div>
+      </div>
+      
+      <div class="overflow-x-auto rounded-xl shadow-lg border border-gray-700/50">
+        <table class="min-w-full divide-y divide-gray-700/50">
+          <thead class="bg-gray-800/80">
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Tanggal</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Deskripsi</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Kategori</th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Jumlah</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Description</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Category</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Method</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">Amount</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
-          <tbody class="bg-gray-800 divide-y divide-gray-700">
-
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">8 April 2025</td>
-              <td class="px-6 py-4 whitespace-nowrap">Catrict 2</td>
-              <td class="px-6 py-4 whitespace-nowrap">Pengeluaran</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-red-500">-Rp 70.000</td>
+          <tbody class="bg-gray-800/50 divide-y divide-gray-700/30">
+            <tr class="hover:bg-gray-700/30 transition-colors group">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                    <i class="fas fa-calendar-day text-blue-400 text-sm"></i>
+                  </div>
+                  <span>8 Apr 2025</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap font-medium">Catrict 2</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 bg-red-900/30 text-red-300 rounded-full text-xs flex items-center gap-1 w-fit">
+                  <i class="fas fa-utensils text-xs"></i> Food & Drinks
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="flex items-center gap-2">
+                  <img src="./image/dana.png" class="h-5 w-auto" alt="Dana"> Dana
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-medium text-red-400">-Rp 70.000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right">
+                <button class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-white transition-opacity">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+              </td>
             </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">30 April 2025</td>
-              <td class="px-6 py-4 whitespace-nowrap">Liquid & 2 Catrict</td>
-              <td class="px-6 py-4 whitespace-nowrap">Rencana Pengeluaran</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-red-500">-Rp 200.000</td>
+            
+            <tr class="hover:bg-gray-700/30 transition-colors group">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-yellow-900/30 flex items-center justify-center">
+                    <i class="fas fa-calendar-day text-yellow-400 text-sm"></i>
+                  </div>
+                  <span>30 Apr 2025</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap font-medium">Liquid & 2 Catrict</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 bg-yellow-900/30 text-yellow-300 rounded-full text-xs flex items-center gap-1 w-fit">
+                  <i class="fas fa-tags text-xs"></i> Planned
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="flex items-center gap-2">
+                  <img src="./image/seabank.png" class="h-5 w-auto" alt="Seabank"> Seabank
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-medium text-red-400">-Rp 200.000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right">
+                <button class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-white transition-opacity">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+              </td>
             </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">1 Mei 2025</td>
-              <td class="px-6 py-4 whitespace-nowrap">Kuota Internet</td>
-              <td class="px-6 py-4 whitespace-nowrap">Pengeluaran</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-red-500">-Rp 50.000</td>
+            
+            <tr class="hover:bg-gray-700/30 transition-colors group">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                    <i class="fas fa-calendar-day text-blue-400 text-sm"></i>
+                  </div>
+                  <span>1 Mei 2025</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap font-medium">Kuota Internet</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 bg-blue-900/30 text-blue-300 rounded-full text-xs flex items-center gap-1 w-fit">
+                  <i class="fas fa-wifi text-xs"></i> Utilities
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="flex items-center gap-2">
+                  <img src="./image/dana.png" class="h-5 w-auto" alt="Dana"> Dana
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-medium text-red-400">-Rp 50.000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right">
+                <button class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-white transition-opacity">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+              </td>
             </tr>
-
+            
+            <tr class="hover:bg-gray-700/30 transition-colors group">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-green-900/30 flex items-center justify-center">
+                    <i class="fas fa-calendar-day text-green-400 text-sm"></i>
+                  </div>
+                  <span>3 Mei 2025</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap font-medium">Gaji Bulanan</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 bg-green-900/30 text-green-300 rounded-full text-xs flex items-center gap-1 w-fit">
+                  <i class="fas fa-money-bill-wave text-xs"></i> Income
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="flex items-center gap-2">
+                  <img src="./image/seabank.png" class="h-5 w-auto" alt="Seabank"> Seabank
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-medium text-green-400">+Rp 2.500.000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right">
+                <button class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-white transition-opacity">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
+      
+      <div class="mt-4 flex justify-between items-center text-sm text-gray-400">
+        <div>Showing 4 of 15 transactions</div>
+        <div class="flex gap-2">
+          <button class="px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="px-3 py-1 rounded-md bg-blue-600 text-white">1</button>
+          <button class="px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors">2</button>
+          <button class="px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors">3</button>
+          <button class="px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
     </section>
 
+    <!-- Financial overview with interactive charts -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-6">Financial Overview</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 lg:col-span-2">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-semibold">Income vs Expenses</h3>
+            <div class="flex gap-2">
+              <select class="bg-gray-700 text-white px-3 py-1 rounded-md text-sm border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>This Month</option>
+                <option>Last Month</option>
+                <option>Last 3 Months</option>
+              </select>
+              <button class="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-md text-sm border border-gray-600">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+          </div>
+          <div class="h-64">
+            <canvas id="incomeExpenseChart"></canvas>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50">
+          <h3 class="text-xl font-semibold mb-4">Spending Breakdown</h3>
+          <div class="h-64">
+            <canvas id="spendingChart"></canvas>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50">
+          <h3 class="text-xl font-semibold mb-4">Quick Stats</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-700/30 p-4 rounded-lg border border-gray-600/30">
+              <div class="text-gray-400 text-sm mb-1">Total Balance</div>
+              <div class="text-2xl font-bold text-green-400">Rp 2.850.000</div>
+            </div>
+            <div class="bg-gray-700/30 p-4 rounded-lg border border-gray-600/30">
+              <div class="text-gray-400 text-sm mb-1">Monthly Income</div>
+              <div class="text-2xl font-bold text-blue-400">Rp 2.500.000</div>
+            </div>
+            <div class="bg-gray-700/30 p-4 rounded-lg border border-gray-600/30">
+              <div class="text-gray-400 text-sm mb-1">Monthly Expenses</div>
+              <div class="text-2xl font-bold text-red-400">Rp 320.000</div>
+            </div>
+            <div class="bg-gray-700/30 p-4 rounded-lg border border-gray-600/30">
+              <div class="text-gray-400 text-sm mb-1">Savings Rate</div>
+              <div class="text-2xl font-bold text-purple-400">87.2%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 lg:col-span-2">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-semibold">Upcoming Bills</h3>
+            <button class="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1">
+              <i class="fas fa-plus"></i> Add Bill
+            </button>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 bg-gray-700/30 rounded-lg border-l-4 border-blue-500">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center">
+                  <i class="fas fa-wifi text-blue-400"></i>
+                </div>
+                <div>
+                  <div class="font-medium">Internet Bill</div>
+                  <div class="text-xs text-gray-400">Due in 3 days</div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-medium text-red-400">-Rp 350.000</div>
+                <div class="text-xs text-gray-400">Auto-pay on May 15</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between p-3 bg-gray-700/30 rounded-lg border-l-4 border-purple-500">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center">
+                  <i class="fas fa-mobile-alt text-purple-400"></i>
+                </div>
+                <div>
+                  <div class="font-medium">Phone Bill</div>
+                  <div class="text-xs text-gray-400">Due in 5 days</div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-medium text-red-400">-Rp 150.000</div>
+                <div class="text-xs text-gray-400">Auto-pay on May 17</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between p-3 bg-gray-700/30 rounded-lg border-l-4 border-green-500">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center">
+                  <i class="fas fa-bolt text-green-400"></i>
+                </div>
+                <div>
+                  <div class="font-medium">Electricity</div>
+                  <div class="text-xs text-gray-400">Due in 7 days</div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-medium text-red-400">-Rp 450.000</div>
+                <div class="text-xs text-gray-400">Estimated</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Financial goals section -->
+    <section class="mb-12">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Financial Goals</h2>
+        <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity flex items-center gap-2">
+          <i class="fas fa-plus"></i> New Goal
+        </button>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 hover-3d">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-1">New Laptop</h3>
+              <p class="text-gray-400 text-sm">Target: Rp 15.000.000</p>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center">
+              <i class="fas fa-laptop text-blue-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="flex justify-between text-sm mb-1">
+              <span>Saved: Rp 3.500.000</span>
+              <span>23%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full" style="width: 23%"></div>
+            </div>
+          </div>
+          <div class="flex justify-between text-sm text-gray-400">
+            <span>Target date: Dec 2025</span>
+            <span>Rp 11.500.000 left</span>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 hover-3d">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Vacation</h3>
+              <p class="text-gray-400 text-sm">Target: Rp 7.000.000</p>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center">
+              <i class="fas fa-umbrella-beach text-purple-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="flex justify-between text-sm mb-1">
+              <span>Saved: Rp 2.100.000</span>
+              <span>30%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="bg-purple-500 h-2 rounded-full" style="width: 30%"></div>
+            </div>
+          </div>
+          <div class="flex justify-between text-sm text-gray-400">
+            <span>Target date: Aug 2025</span>
+            <span>Rp 4.900.000 left</span>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 hover-3d">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Emergency Fund</h3>
+              <p class="text-gray-400 text-sm">Target: Rp 10.000.000</p>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center">
+              <i class="fas fa-shield-alt text-green-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="flex justify-between text-sm mb-1">
+              <span>Saved: Rp 6.800.000</span>
+              <span>68%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="bg-green-500 h-2 rounded-full" style="width: 68%"></div>
+            </div>
+          </div>
+          <div class="flex justify-between text-sm text-gray-400">
+            <span>Target date: Oct 2025</span>
+            <span>Rp 3.200.000 left</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="bg-gray-800/50 text-white py-8 border-t border-gray-700/50 relative z-10">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="hexagon bg-gradient-to-br from-purple-600 to-blue-600 p-1">
+              <img src="./image/logo.png" class="h-8 w-auto mix-blend-screen" alt="Logo" />
+            </div>
+            <span class="text-xl font-bold glow-text">Dardcor</span>
+          </div>
+          <p class="text-gray-400 text-sm">Your personal financial management solution with advanced analytics and security.</p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> Home
+            </a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> My Assets
+            </a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> Analytics
+            </a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> Settings
+            </a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> Documentation
+            </a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> Tutorials
+            </a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> API
+            </a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs text-blue-400"></i> Support
+            </a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Connect</h3>
+          <div class="flex gap-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 transition-colors flex items-center justify-center">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-cyan-500 transition-colors flex items-center justify-center">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-pink-600 transition-colors flex items-center justify-center">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-800 transition-colors flex items-center justify-center">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <p class="text-gray-400 text-sm">Subscribe to our newsletter</p>
+          <div class="mt-2 flex">
+            <input type="email" placeholder="Your email" class="bg-gray-700 text-white px-3 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm w-full">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-r-md text-sm">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 pt-6 border-t border-gray-700/50 text-center text-sm text-gray-400">
+        <p>© 2025 Dardcor. All rights reserved. | <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> | <a href="#" class="hover:text-white transition-colors">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
 
   <div id="hacker-loader" class="fixed inset-0 bg-black text-white font-mono p-4 z-[100] hidden flex items-start justify-center flex-col">
     <pre id="loadingText" class="whitespace-pre-line text-left w-full max-w-xl mb-4 pl-8 text-sm sm:text-base md:text-lg"></pre>
@@ -99,6 +659,7 @@
   </div>
 
   <script>
+    // Dashboard toggle
     const menuBtn = document.getElementById("menuBtn");
     const closeBtn = document.getElementById("closeBtn");
     const dashboard = document.getElementById("dashboard");
@@ -110,6 +671,7 @@
       dashboard.classList.add("translate-x-full");
     });
   
+    // Hacker loader
     const dashboardLinks = document.querySelectorAll("#dashboard a");
     const hackerLoader = document.getElementById("hacker-loader");
     const loadingText = document.getElementById("loadingText");
@@ -174,7 +736,123 @@
         });
       });
     });
-  </script>
 
+    // Close dashboard with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        dashboard.classList.add("translate-x-full");
+      }
+    });
+
+    // Initialize charts
+    document.addEventListener('DOMContentLoaded', function() {
+      // Income vs Expense Chart
+      const incomeExpenseCtx = document.getElementById('incomeExpenseChart').getContext('2d');
+      const incomeExpenseChart = new Chart(incomeExpenseCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [
+            {
+              label: 'Income',
+              data: [2500000, 2700000, 3000000, 2900000, 2500000, 2800000],
+              backgroundColor: 'rgba(59, 130, 246, 0.7)',
+              borderColor: 'rgba(59, 130, 246, 1)',
+              borderWidth: 1
+            },
+            {
+              label: 'Expenses',
+              data: [1200000, 1500000, 1800000, 2000000, 1700000, 1900000],
+              backgroundColor: 'rgba(239, 68, 68, 0.7)',
+              borderColor: 'rgba(239, 68, 68, 1)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                callback: function(value) {
+                  return 'Rp ' + value.toLocaleString();
+                }
+              }
+            },
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: 'white'
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': Rp ' + context.raw.toLocaleString();
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Spending Chart
+      const spendingCtx = document.getElementById('spendingChart').getContext('2d');
+      const spendingChart = new Chart(spendingCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Food & Drinks', 'Transportation', 'Entertainment', 'Utilities', 'Others'],
+          datasets: [{
+            data: [450000, 200000, 150000, 100000, 100000],
+            backgroundColor: [
+              'rgba(239, 68, 68, 0.7)',
+              'rgba(59, 130, 246, 0.7)',
+              'rgba(168, 85, 247, 0.7)',
+              'rgba(234, 179, 8, 0.7)',
+              'rgba(34, 197, 94, 0.7)'
+            ],
+            borderColor: [
+              'rgba(239, 68, 68, 1)',
+              'rgba(59, 130, 246, 1)',
+              'rgba(168, 85, 247, 1)',
+              'rgba(234, 179, 8, 1)',
+              'rgba(34, 197, 94, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                color: 'white'
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': Rp ' + context.raw.toLocaleString();
+                }
+              }
+            }
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
