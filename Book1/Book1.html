@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jika Kehilangan Diri Sendiri | Dardcor</title>
+  <link rel="icon" type="image/png" href="../image/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .hover-3d {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-3d:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .glow-text {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+    .animate-gradient {
+      background-size: 300% 300%;
+      animation: gradient 8s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .dashboard-item {
+      transition: all 0.3s ease;
+    }
+    .dashboard-item:hover {
+      transform: translateX(5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .book-header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Book1.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 300px;
+    }
+    .content-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .highlight-quote {
+      background: rgba(79, 209, 197, 0.1);
+      border-left: 4px solid #4fd1c5;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
+    }
+    .story-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #e5e7eb;
+    }
+    .story-section {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen relative text-white overflow-x-hidden">
+
+  <  <nav class="glass-effect bg-gradient-to-r from-purple-900 via-blue-900 to-red-900 animate-gradient text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-50 shadow-xl">
+    <div class="flex items-center gap-2">
+      <div class="hover-3d">
+        <img src="../image/logo.png" class="h-8 w-auto" alt="Logo" />
+      </div>
+      <span class="text-xl font-bold glow-text">Dardcor</span>
+    </div>
+    <button id="menuBtn" class="text-white text-2xl focus:outline-none hover:text-cyan-400 transition-colors relative group" aria-label="Open menu">
+      ☰
+      <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+    </button>
+  </nav>
+
+  <div id="dashboard" class="fixed top-0 right-0 w-72 h-full bg-gradient-to-b from-gray-900/90 via-gray-900/95 to-gray-900 text-white shadow-lg transform translate-x-full transition-transform duration-300 z-50 border-l border-gray-700/50 backdrop-blur-md">
+    <div class="p-4 flex justify-between items-center border-b border-gray-700/50">
+      <h2 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">Dashboard</h2>
+      <button id="closeBtn" class="text-xl hover:text-cyan-400 transition-colors transform hover:rotate-90" aria-label="Close menu">✖</button>
+    </div>
+  
+    <ul class="mt-4 space-y-1 p-2">
+      <li><a href="home.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-cyan-400">
+        <i class="fas fa-home text-cyan-400"></i> Home
+      </a></li>
+      <li><a href="myassets.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-gray-400">
+        <i class="fas fa-folder text-blue-400"></i> My Assets
+      </a></li>
+      <li><a href="motivation.html" class="dashboard-item block px-4 py-3 rounded-md hover:bg-gray-800/50 flex items-center gap-3 border-l-4 border-transparent hover:border-red-400">
+        <i class="fas fa-fire text-red-400"></i> Motivation
+      </a></li>
+    </ul>
+  </div>
+
+  <main class="pt-20 pb-10">
+    <!-- Book Header -->
+    <div class="book-header flex items-center justify-center p-8 md:p-12">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 glow-text">Jika Kehilangan Diri Sendiri</h1>
+        <p class="text-xl text-gray-300">Sebuah perjalanan menemukan kembali jati diri yang hilang</p>
+      </div>
+    </div>
+
+    <!-- Book Content -->
+    <div class="content-wrapper px-4 md:px-8 py-12">
+      <div class="story-content">
+        <section class="story-section">
+          <p>Pagi itu aku terbangun dengan perasaan yang tak bisa kujelaskan. Seperti ada sesuatu yang hilang, tetapi bukan benda yang bisa kucari di bawah tempat tidur atau dalam lemari. Ini lebih dalam dari itu—seperti bagian dari diriku sendiri telah menguap tanpa bekas.</p>
+          
+          <p>Di depan cermin, wajah yang kulihat memang wajahku—garis kontur yang sama, bekas jerawat di pipi kanan, rambut ikal yang selalu susah diatur. Tapi mata yang menatap balik terasa asing, seolah milik orang lain yang kebetulan terjebak dalam tubuhku.</p>
+          
+          <div class="highlight-quote">
+            "Kehilangan diri sendiri tidak terjadi dalam semalam. Itu adalah seribu kompromi kecil, seratus pengorbanan diam-diam, dan pulang keputusan yang mengikis siapa kita sedikit demi sedikit."
+          </div>
+          
+          <p>Kereta pagi penuh dengan wajah-wajah yang sama lelahnya. Aku bertanya-tanya berapa banyak dari kita yang benar-benar ingin berada di sana. Pria di seberangku memegang kopi dengan kedua tangan seperti sedang berdoa, wanita muda di sampingnya mengetik cepat di laptop kecil sambil sesekali mengusap matanya. Kita semua terlihat seperti aktor dalam drama yang tidak kita pahami.</p>
+          
+          <p>Di kantor, aku melakukan rutinitas dengan otomatis: menyalakan komputer, membuka email, menghadiri rapat. Kata-kata keluar dari mulutku—ide-ide, saran, bahkan tawa—tapi semua terasa seperti rekaman yang diputar ulang. Ketika bos memuji presentasiku, aku hanya bisa mengangguk sambil bertanya dalam hati: "Siapa sebenarnya yang baru saja mereka puji?"</p>
+        </section>
+
+        <section class="story-section">
+          <p>Malam itu, hujan turun deras dan aku menemukan diri berdiri di depan lemari tua yang tidak pernah kubuka. Debu beterbangan ketika kuambil kotak kayu berisi kenangan masa kecil. Di dalamnya ada buku harian dengan sampul biru yang sudah lusuh.</p>
+          
+          <p>Tanganku gemetar membuka halaman pertama. Tulisan anak-anakku yang ceroboh menceritakan tentang petualangan imajiner di hutan belakang rumah, tentang cita-cita menjadi penulis terkenal, tentang hari ketika aku berjanji pada diri sendiri untuk tidak pernah menjadi orang dewasa yang membosankan.</p>
+          
+          <p>Di antara halaman-halaman itu, ada foto usang yang membuat dadaku sesak. Aku berusia sepuluh tahun, berdiri di atas batu besar dengan tangan teracung, mulut terbuka lebar dalam tawa yang tulus. Latar belakangnya adalah pantai tempat kami sering berlibat—tempat dimana aku dulu merasa paling bebas.</p>
+          
+          <div class="highlight-quote">
+            "Kita sering mengubur diri kita yang sebenarnya bukan dengan sekop besar, tetapi dengan sendok kecil—keputusan demi keputusan yang terasa tidak berarti sampai tiba saatnya kita menyadari kita telah terkubur hidup-hidup."
+          </div>
+          
+          <p>Aku menangis. Bukan tangisan pelan yang romantis, tetapi isakan kasar dan berantakan seperti badai yang tak terduga. Air mata itu membersihkan sesuatu dalam diriku, membuka luka lama yang tidak kusadari masih ada.</p>
+        </section>
+
+        <section class="story-section">
+          <p>Esok harinya, aku melakukan sesuatu yang gila. Aku menelepon bosku dan meminta cuti dua minggu tanpa penjelasan yang jelas. Suaranya di telepon terdapat bingung—aku selalu menjadi karyawan yang patuh, yang jarang sakit apalagi meminta cuti mendadak.</p>
+          
+          <p>Dengan tas ransel tua dan tabungan yang tidak seberapa, aku naik bus ke kota kecil di pegunungan tempat aku dibesarkan. Selama perjalanan enam jam, aku menatap keluar jendela sementara ingatan-ingatan lama bermunculan seperti bunga di padang rumput setelah hujan.</p>
+          
+          <p>Ketika bus akhirnya berhenti di terminal kecil, udara segar pegunungan menyambutku seperti pelukan lama. Aku menyewa kamar di penginapan sederhana milik seorang janda tua yang masih ingat keluargaku. "Kau mirip sekali dengan ibumu," katanya sambil memberikanku kunci kamar. Perkataan sederhana itu membuat dadaku berdegup kencang.</p>
+          
+          <p>Rumah masa kecilku masih berdiri, meski catnya sudah pudar dan pagarnya berbeda. Aku duduk di bawah pohon mangga yang sama tempat dulu aku menghabiskan sore-sore panjang dengan buku dan mimpi-mimpi besar. Di sini, di bawah naungan daun-daun yang masih sama, aku mulai merasakan sesuatu yang hampir terlupakan—rasa menjadi diri sendiri.</p>
+        </section>
+
+        <section class="story-section">
+          <p>Di warung kopi kecil yang dulu sering kukunjungi dengan ayah, aku bertemu Pak Harjo, guru SD-ku yang sekarang sudah berusia tujuh puluhan. Matanya masih tajam seperti dulu, dan yang mengejutkan, dia langsung mengenaliku.</p>
+          
+          <p>"Rian, anak yang selalu punya cerita," katanya sambil tersenyum. "Kau dulu membuat seluruh kelas terpana dengan imajinasimu. Guru-guru lain sering mengeluh karena kau lebih suka menulis cerita daripada mengerjakan matematika."</p>
+          
+          <p>Kami berbicara selama berjam-jam. Dia bercerita tentang versiku yang sudah kulupakan—anak laki-laki yang tidak takut berbeda, yang percaya pada kekuatan kata-kata, yang berjanji akan mengelilingi dunia dan menuliskan semua petualangannya.</p>
+          
+          <div class="highlight-quote">
+            "Terkadang kita membutuhkan orang lain untuk mengingatkan kita siapa diri kita sebenarnya—seperti cermin yang menunjukkan refleksi yang sudah lama kita hindari."
+          </div>
+          
+          <p>Malam itu, di kamar penginapan yang sunyi, aku mengambil pena dan kertas. Untuk pertama kalinya dalam lima belas tahun, aku menulis bukan untuk laporan kantor atau email profesional, tetapi untuk diriku sendiri. Kata-kata mengalir deras, seperti air yang telah lama terhambat oleh bendera kini akhirnya bebas.</p>
+          
+          <p>Aku menulis tentang rasa sakit kehilangan ayah, tentang ketakutan menjadi dewasa, tentang semua kompromi yang kulakukan karena berpikir itulah yang disebut kedewasaan. Aku menulis sampai tanganku sakit dan mataku berkunang-kunang. Dan ketika akhirnya aku berhenti, ada perasaan aneh—seperti menemukan bagian dari diriku yang selama ini tersembunyi.</p>
+        </section>
+
+        <section class="story-section">
+          <p>Kembali ke kota besar, aku membawa serta versi diriku yang baru ditemukan itu. Aku tidak langsung berubah menjadi orang yang sama sekali berbeda—aku masih bekerja di pekerjaan yang sama, masih tinggal di apartemen yang sama. Tapi sesuatu yang mendasar telah berubah.</p>
+          
+          <p>Aku mulai bangun lebih pagi untuk menulis sebelum bekerja. Aku mengatakan "tidak" pada proyek yang tidak berarti bagiku, bahkan jika itu berarti promosi yang lebih lambat. Aku menghubungi teman-teman lama yang dulu kujauhi karena sibuk "menjadi dewasa".</p>
+          
+          <p>Prosesnya tidak mudah. Ada hari-hari ketika aku meragukan segalanya, ketika godaan untuk kembali ke pola lama begitu kuat. Tapi sekarang ada suara kecil di dalam diriku—kompas yang perlahan kupelajari untuk dipercaya—yang membisikkan ketika aku mulai menyimpang lagi.</p>
+          
+          <p>Satu tahun kemudian, kumpulan cerpen pertamaku diterbitkan oleh penerbit kecil. Bukan bestseller, tidak membuatku kaya, tapi ketika seorang pembaca mengirim email bahwa tulisanku membuatnya merasa kurang sendirian, sesuatu dalam diriku tersentuh.</p>
+          
+          <div class="highlight-quote">
+            "Menemukan diri sendiri bukanlah akhir perjalanan, tetapi awal dari petualangan sebenarnya—petualangan menjadi sepenuhnya hidup, sepenuhnya hadir, sepenuhnya diri kita yang sebenarnya."
+          </div>
+          
+          <p>Sekarang, ketika aku bercermin di pagi hari, mata yang menatap balik masih memiliki keraguan dan ketakutan—tapi setidaknya aku mengenali mereka sebagai milikku. Dan mungkin, itulah arti sebenarnya dari menemukan diri sendiri: bukan menjadi sempurna, tetapi menjadi asli.</p>
+        </section>
+
+        <section class="mt-16 p-8 bg-gray-800/50 rounded-lg">
+          <h2 class="text-2xl font-bold mb-6 text-center text-cyan-400">Epilog: Untukmu yang Juga Tersesat</h2>
+          <p class="mb-4 text-gray-300 leading-relaxed">
+            Jika kau membaca ini dan merasa seperti aku dulu—seperti penonton dalam hidupmu sendiri—ketahuilah bahwa tidak ada kata terlambat untuk memulai pencarian. Mulailah dari hal kecil: kenangan bahagia yang tiba-tiba muncul, hobi lama yang ditinggalkan, atau bahkan ketidaknyamanan yang tidak bisa kau jelaskan.
+          </p>
+          <p class="mb-4 text-gray-300 leading-relaxed">
+            Kehilangan diri sendiri bukanlah kegagalan, tetapi kesempatan untuk menemukan versi dirimu yang lebih dalam dan lebih kuat. Seperti biji yang harus terkubur dulu sebelum bisa tumbuh, terkadang kita harus tersesat sebelum benar-benar ditemukan.
+          </p>
+          <p class="text-center mt-8 text-lg italic text-cyan-300">
+            "Diri yang sebenarnya tidak pernah benar-benar hilang—hanya menunggu untuk diingat kembali."
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const dashboard = document.getElementById("dashboard");
+  
+    menuBtn.addEventListener("click", () => {
+      dashboard.classList.remove("translate-x-full");
+    });
+    closeBtn.addEventListener("click", () => {
+      dashboard.classList.add("translate-x-full");
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        dashboard.classList.add("translate-x-full");
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!dashboard.contains(e.target) && e.target !== menuBtn) {
+        dashboard.classList.add("translate-x-full");
+      }
+    });
+  </script>
+</body>
+</html>
